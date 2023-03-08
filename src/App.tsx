@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
+import {Routes, Route} from 'react-router-dom'
+import Navbar from './components/Navbar';
 
-function App() {
+const App:FC = () => {
   return (
-    <div className="App">
-      
-    </div>
+    <>
+      <Navbar />
+      <Routes></Routes>
+    </>
   );
 }
 
