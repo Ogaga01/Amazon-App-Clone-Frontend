@@ -10,6 +10,10 @@
     color: $color-white;
     justify-content: space-evenly;
 
+    @include respond (mob-nav) {
+        display: none;
+    }
+
     &__image {
         width: 7%;
 
@@ -21,6 +25,17 @@
         &:hover {
             border: .1rem solid $color-white;
         }
+        
+        @include respond (tab-port) {
+            width: 8%;
+        }
+
+        @include respond (tab-land) {
+            width: 10%;
+        }
+
+        
+        
     }
 
     &__delivery {
@@ -28,6 +43,17 @@
         padding: 1rem;
         align-items: end;
         width: 7%;
+
+        
+        @include respond (tab-port) {
+            width: 8%;
+        }
+
+        @include respond (tab-land) {
+            width: 10%;
+        }
+
+        
 
         &--icon {
             color: $color-white;
@@ -80,6 +106,16 @@
         width: 60%;
         align-content: center;
 
+        @include respond (tab-port) {
+            width: 40%;
+        }
+
+        @include respond (tab-land) {
+            width: 40%;
+        }
+
+        
+
         &--input {
             width: 95%;
             height: 4rem;
@@ -113,15 +149,37 @@
         display: flex;
         align-items: center;
 
+        
+        @include respond (tab-port) {
+            width: 15%;
+        }
+
+        @include respond (tab-land) {
+            width: 13%;
+        }
+
+        
+        
+
         &--details {
             width: 25%;
             padding: 2rem;
             background-color: $color-white;
             position: relative;
-            margin-left: 70%;
+            left: 70%;
             height: 30vh;
             margin-top: -1.7rem;
             text-align: center;
+
+            @include respond (tab-port) {
+            left: 60%;
+        }
+
+        @include respond (tab-land) {
+            left: 65%;
+        }
+
+        
 
             &::before {
                 content: "";
@@ -133,6 +191,18 @@
                 box-sizing: border-box;
                 right: 28%;
                 top: -.5rem;
+
+                
+                @include respond (tab-port) {
+                    right: 26%;
+                }
+
+                @include respond (tab-land) {
+            right: 35%;
+        }
+
+        
+                
             }
         }
 
@@ -172,6 +242,14 @@
         width: 5%;
         padding: 1rem;
 
+        @include respond (tab-port) {
+            width: 5%;
+        }
+
+        @include respond (tab-land) {
+            width: 7%;
+        }
+
         &--div {
             display: flex;
             flex-direction: column;
@@ -184,6 +262,10 @@
             color: $color-orange-dark;
             font-size: 1.3rem;
             font-weight: 700;
+
+            @include respond (mob-nav-b) {
+            margin-left: 40%;
+        }
         }
 
         &--para {
