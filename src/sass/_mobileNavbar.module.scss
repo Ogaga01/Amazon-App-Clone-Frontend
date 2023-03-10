@@ -1,5 +1,6 @@
 @import 'mixins';
 @import 'variables';
+@import 'animations';
 
 .mobileNav {
     display: flex;
@@ -113,6 +114,100 @@
 
         &--search {
             font-size: 3.5rem;
+        }
+    }
+
+    &__slider {
+        display: flex;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        transition: all 1s;
+
+        @include respond (mob-nav-b) {
+            display: none;
+        }
+
+        &--nav {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            background-color: $slider-background;
+            left: 0;
+            animation: moveInLeft;
+            animation-duration: 1s;
+            transition: all 1s;
+        }
+
+        &--header {
+            background-color: $color-primary;
+            height: 15vh;
+            padding: 2.5rem;
+        }
+
+        &--user {
+            right: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        &--icon {
+            color: $color-white;
+            font-size: 3.5rem;
+        }
+
+        &--name {
+            color: $color-white;
+            font-size: 2rem;
+        }
+
+        &--title {
+            color: $color-white;
+            font-size: 3.5rem;
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        &--list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &--list > li {
+            background-color: $color-white;
+            height: 10vh;
+            padding: 1.5rem;
+        }
+
+        &--list > li:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        &--item {
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            color: $color-black;
+        }
+
+        &--close {
+            background-color: #00000080;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            right: 0;
+            animation: moveInRight;
+            animation-duration: 1s;
+            transition: all 1s;
+        }
+
+        &--x {
+            color: $color-white;
+            font-size: 5rem;
+            margin-top: 5rem;
+            font-weight: 700;
         }
     }
 }

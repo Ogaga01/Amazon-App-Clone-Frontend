@@ -67,8 +67,8 @@ const MobileNavbar: FC = () => {
           <div className={styles["mobileNav__slider--nav"]}>
             <div className={styles["mobileNav__slider--header"]}>
               <div className={styles["mobileNav__slider--user"]}>
-                <AiOutlineUser className={styles["mobileNav__slider--icon"]} />
                 <p className={styles["mobileNav__slider--name"]}>User</p>
+                <AiOutlineUser className={styles["mobileNav__slider--icon"]} />
               </div>
               <div className={styles["mobileNav__slider--title"]}>Amazon</div>
             </div>
