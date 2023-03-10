@@ -1,0 +1,118 @@
+@import 'mixins';
+@import 'variables';
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2.5rem;
+    background-color: $color-primary;
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+
+        &--left {
+            display: flex;
+            width: 40%;
+            align-items: center;
+        }
+
+        &--menu {
+            color: $color-white;
+            font-size: 5rem;
+            width: 20%;
+        }
+
+        &--amazonDiv {
+            width: 60%;
+        }
+
+        &--amazon {
+            width: 100%;
+        }
+
+        &--right {
+            width: 30%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &--user {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &--icon {
+            color: white;
+            width: 100%;
+            font-size: 5rem;
+        }
+
+        &--name {
+            color: $color-white;
+            font-size: 2rem;
+        }
+    }
+
+    @include respond (mob-nav-b) {
+        display: none;
+    }
+
+    &__cart {
+        
+
+        &--cart {
+            width: 40%;
+        }
+
+        &--div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: -.7rem;
+        }
+
+        &--img {
+            width: 60%;
+        }
+
+        &--p {
+            color: $color-orange-dark;
+            left: 27%;
+            position: relative;
+            font-size: 2rem;
+            margin-bottom: -1.5rem;
+            margin-top: 0;
+        }
+    }
+
+    &__search {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 5rem;
+        margin-top: 3rem;
+
+        &--input {
+            width: 75%;
+        }
+
+        &--icon {
+            background-color: $color-orange-light;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 7%;
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+
+        &--search {
+            font-size: 3.5rem;
+        }
+    }
+}
