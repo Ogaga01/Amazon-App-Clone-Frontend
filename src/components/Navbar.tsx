@@ -9,6 +9,8 @@ import cart from "./../images/cart.png";
 const Navbar: FC = () => {
   const [showAccountDetails, setShowAccountDetails] = useState<boolean>(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+
   const handleHover = () => {
     setShowAccountDetails(true);
   };

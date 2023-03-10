@@ -1,9 +1,29 @@
-import React, {FC} from 'react';
+import React, { FC, useState } from 'react';
+import { fetchUser } from '../redux/actions/loginAction';
 import { NavLink } from 'react-router-dom';
 import amazon from './../images/amazon-logo-dark.png'
 import styles from './../sass/_login.module.scss'
+import { useAppDispatch } from '../redux/index';
 
 const Login: FC = () => {
+    const [emailValue, setEmailValue] = useState<string>('')
+    const [passwordValue, setPasswordValue] = useState<string>("");
+
+    const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmailValue(e.target.value)
+    }
+
+    const handlePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPasswordValue(e.target.value)
+    }
+
+    const dispatch = useAppDispatch()
+
+    const handleFetchUser = () => {
+        dispatch(fetchUser(emailValue, passwordValue))
+    }
+    
+
     return (
       <section className={styles["login"]}>
         <NavLink to="/" className={styles["login__amazon"]}>
@@ -20,7 +40,9 @@ const Login: FC = () => {
           </label>
           <input
             id="email"
-            type="text"
+                    type="text"
+                    value={emailValue}
+                    onChange={handleEmailInput}
             className={styles["login__form--input"]}
           />
           <label htmlFor="password" className={styles["login__form--label"]}>
@@ -28,10 +50,12 @@ const Login: FC = () => {
           </label>
           <input
             id="password"
-            type="password"
+                    type="password"
+                    value={passwordValue}
+                    onChange={handlePasswordInput}
             className={styles["login__form--input"]}
           />
-          <button type="button" className={styles["login__form--button"]}>
+          <button type="button" className={styles["login__form--button"]} onClick={handleFetchUser} > 
             Sign In
           </button>
           <p className={styles["login__form--para"]}>

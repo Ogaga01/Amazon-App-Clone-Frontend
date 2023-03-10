@@ -17,7 +17,7 @@ const App:FC = () => {
       <Navbar />
       <MobileNavbar />
       <Routes>
-        <Route path="Account" element={<Account />} />
+        <Route path="Account" element={<Login />} />
         <Route path="Orders" element={<Orders />} />
       </Routes>
     </>
