@@ -9,12 +9,14 @@ import Login from './components/Login';
 const App:FC = () => {
   return (
     <>
-      <Route path='login' element={<Login/>}/>
-      <Navbar />
-      <MobileNavbar/>
       <Routes>
-        <Route path='Account' element={<Account/>}/>
-        <Route path='Orders' element={<Orders/>}/>
+        <Route path="login" element={<Login />} />
+      </Routes>
+      <Navbar />
+      <MobileNavbar />
+      <Routes>
+        <Route path="Account" element={<Account />} />
+        <Route path="Orders" element={<Orders />} />
       </Routes>
     </>
   );

@@ -8,6 +8,14 @@
     margin: auto;
     align-items: center;
 
+    @include respond (mob-nav) {
+        width: 60%;
+    }
+
+    @include respond (mini-phone) {
+        width: 80%;
+    }
+
     &__amazon {
         width: 40%;
 
