@@ -1,0 +1,19 @@
+@import 'mixins';
+@import 'variables';
+
+.orders {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+
+    &__heading {
+        font-size: 3rem;
+        font-weight: 500;
+    }
+
+    &__para {
+        font-size: 1.5rem;
+
+    }
+}

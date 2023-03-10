@@ -93,7 +93,7 @@ const Navbar: FC = () => {
               <NavLink to="Account" className={styles["nav__account--items"]}>Account</NavLink>
             </li>
             <li className={styles["nav__account--item"]}>
-              <NavLink to="Order" className={styles["nav__account--items"]}>Order</NavLink>
+              <NavLink to="Orders" className={styles["nav__account--items"]}>Order</NavLink>
             </li>
             <li className={styles["nav__account--items"]}>Sign out</li>
           </ul>

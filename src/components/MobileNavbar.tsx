@@ -83,7 +83,7 @@ const MobileNavbar: FC = () => {
               </li>
               <li>
                 <NavLink
-                  to="Order"
+                  to="Orders"
                   className={styles["mobileNav__slider--item"]}
                 >
                   Order
