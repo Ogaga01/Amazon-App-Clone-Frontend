@@ -20,13 +20,13 @@ const Navbar: FC = () => {
   return (
     <>
       <section className={styles["nav"]}>
-        <div className={styles["nav__image"]}>
+        <NavLink to='/' className={styles["nav__image"]}>
           <img
             src={amazon}
             alt="Amazon Icon"
             className={styles["nav__image--img"]}
           />
-        </div>
+        </NavLink>
         <div className={styles["nav__delivery"]}>
           <HiOutlineLocationMarker className={styles["nav__delivery--icon"]} />
           <div className={styles["nav__para"]}>
