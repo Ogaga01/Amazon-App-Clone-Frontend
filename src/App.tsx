@@ -4,10 +4,12 @@ import Navbar from './components/Navbar';
 import MobileNavbar from './components/MobileNavbar';
 import Account from './components/Account';
 import Orders from './components/Orders';
+import Login from './components/Login';
 
 const App:FC = () => {
   return (
     <>
+      <Route path='login' element={<Login/>}/>
       <Navbar />
       <MobileNavbar/>
       <Routes>
