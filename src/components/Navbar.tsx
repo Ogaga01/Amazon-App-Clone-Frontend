@@ -1,15 +1,31 @@
 import React, { FC, useState } from "react";
 import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import amazon from "./../images/amazon-icon.png";
 import usa from "./../images/america-flag.png";
 import styles from "./../sass/_navbar.module.scss";
 import cart from "./../images/cart.png";
+import { useAppSelector } from '../redux/index';
 
 const Navbar: FC = () => {
   const [showAccountDetails, setShowAccountDetails] = useState<boolean>(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+
+  const navigate = useNavigate()
+
+  const user = useAppSelector((state) => {
+    return state.loginSlice.user
+  })
+
+  if (user !== null) {
+    setIsLoggedIn(true)
+    navigate('/Account')
+  }
+
+//  const isLoggedIn = useAppSelector((state)=>{
+//   return state.loginSlice.isLoggedIn
+//  })
 
   const handleHover = () => {
     setShowAccountDetails(true);
@@ -51,11 +67,11 @@ const Navbar: FC = () => {
           />
           <p className={styles["nav__language--name"]}>EN.</p>
         </div>
-        <NavLink
+        {!isLoggedIn ? <><NavLink
           className={styles["nav__account"]}
           onMouseOver={handleHover}
           onMouseLeave={handleLeave}
-          to="Account"
+          to="Login"
         >
           <div className={styles["nav__para"]}>
             <p className={styles["nav__para--thin"]}>Hello, sign in</p>
@@ -63,25 +79,49 @@ const Navbar: FC = () => {
             <h1 className={styles["nav__para--bold"]}>Account & Lists</h1>
           </div>
           <div className={styles["nav__triangle"]}></div>
-        </NavLink>
-        <NavLink className={styles["nav__orders"]} to="Orders">
-          <div className={styles["nav__para"]}>
-            <p className={styles["nav__para--thin"]}>Returns</p>
-            <br />
-            <p className={styles["nav__para--bold"]}>& Orders</p>
-          </div>
-        </NavLink>
-        <NavLink className={styles["nav__cart"]} to="Cart">
-          <div className={styles["nav__cart--div"]}>
-            <p className={styles["nav__cart--p"]}>0</p>
-            <img
-              src={cart}
-              alt="Amazon Cart"
-              className={styles["nav__cart--img"]}
-            />
-          </div>
-          <p className={styles["nav__cart--para"]}>Cart</p>
-        </NavLink>
+        </NavLink><NavLink className={styles["nav__orders"]} to="Orders">
+            <div className={styles["nav__para"]}>
+              <p className={styles["nav__para--thin"]}>Returns</p>
+              <br />
+              <p className={styles["nav__para--bold"]}>& Orders</p>
+            </div>
+          </NavLink><NavLink className={styles["nav__cart"]} to="Cart">
+            <div className={styles["nav__cart--div"]}>
+              <p className={styles["nav__cart--p"]}>0</p>
+              <img
+                src={cart}
+                alt="Amazon Cart"
+                className={styles["nav__cart--img"]} />
+            </div>
+            <p className={styles["nav__cart--para"]}>Cart</p>
+          </NavLink></> : <><NavLink
+            className={styles["nav__account"]}
+            onMouseOver={handleHover}
+            onMouseLeave={handleLeave}
+            to="Account"
+          >
+            <div className={styles["nav__para"]}>
+              <p className={styles["nav__para--thin"]}>Hello, {user!.name.split(' ')[0]}</p>
+              <br />
+              <h1 className={styles["nav__para--bold"]}>Account & Lists</h1>
+            </div>
+            <div className={styles["nav__triangle"]}></div>
+          </NavLink><NavLink className={styles["nav__orders"]} to="Orders">
+              <div className={styles["nav__para"]}>
+                <p className={styles["nav__para--thin"]}>Returns</p>
+                <br />
+                <p className={styles["nav__para--bold"]}>& Orders</p>
+              </div>
+            </NavLink><NavLink className={styles["nav__cart"]} to="Cart">
+              <div className={styles["nav__cart--div"]}>
+                <p className={styles["nav__cart--p"]}>{user!.cart.length}</p>
+                <img
+                  src={cart}
+                  alt="Amazon Cart"
+                  className={styles["nav__cart--img"]} />
+              </div>
+              <p className={styles["nav__cart--para"]}>Cart</p>
+            </NavLink></>}
       </section>
       {showAccountDetails && (
         <div

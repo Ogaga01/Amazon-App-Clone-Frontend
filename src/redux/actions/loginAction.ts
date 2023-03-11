@@ -15,8 +15,16 @@ export const fetchUser = (email:string, password:string) => {
 
         const data = await response.json()
 
-        console.log(data);
+        console.log(data.data.user);
 
-        _dispatch(LoginActions.login(data.user))
+        const user = data.data.user
+
+        const person = {
+            name: user.name,
+            cart: user.cart,
+            role: user.role
+        }
+
+        _dispatch(LoginActions.login(person))
     }
 }
