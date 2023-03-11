@@ -1,0 +1,69 @@
+@import 'mixins';
+@import 'variables';
+
+.login {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+
+    @include respond (mob-nav) {
+        width: 60%;
+    }
+
+    @include respond (mini-phone) {
+        width: 80%;
+    }
+
+    &__amazon {
+        width: 40%;
+
+        &--img {
+            width: 100%;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        border: .1rem solid $color-black;
+
+        &--heading {
+            font-size: 3rem;
+            font-weight: 390;
+        }
+
+        &--label {
+            font-size: 1.6rem;
+        }
+
+        &--input {
+            height: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        &--button {
+            height: 3rem;
+            background: linear-gradient(#f6dd9e,#f0c24d);
+            border: 0.075em solid #878787;
+            margin-bottom: 2rem;
+        }
+
+        &--para {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__hr {
+        background-color: $color-black;
+        height: .1rem;
+        width: 100%;
+        margin: 2rem 0;
+    }
+
+    &__para {
+        font-size: 1.2rem;
+    }
+}

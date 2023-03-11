@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { FC } from 'react';
+import {Routes, Route} from 'react-router-dom'
+import Navbar from './components/Navbar';
+import MobileNavbar from './components/MobileNavbar';
+import Account from './components/Account';
+import Orders from './components/Orders';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
-function App() {
+const App: FC = () => {
+  const shouldShowNavbar = !["/Login", "/SignUp"].includes(
+    // eslint-disable-next-line no-restricted-globals
+    location.pathname
+  );
+
   return (
-    <div className="App">
-      
-    </div>
+    <>
+      {shouldShowNavbar && <Navbar />}
+      {shouldShowNavbar && <MobileNavbar/>}
+      <Routes>
+        <Route path="Account" element={<Account />} />
+        <Route path="Orders" element={<Orders />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="SignUp" element={<SignUp />} />
+      </Routes>
+    </>
   );
 }
 

@@ -1,0 +1,213 @@
+@import 'mixins';
+@import 'variables';
+@import 'animations';
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2.5rem;
+    background-color: $color-primary;
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+
+        &--left {
+            display: flex;
+            width: 40%;
+            align-items: center;
+        }
+
+        &--menu {
+            color: $color-white;
+            font-size: 5rem;
+            width: 20%;
+        }
+
+        &--amazonDiv {
+            width: 60%;
+        }
+
+        &--amazon {
+            width: 100%;
+        }
+
+        &--right {
+            width: 30%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &--user {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &--icon {
+            color: white;
+            width: 100%;
+            font-size: 5rem;
+        }
+
+        &--name {
+            color: $color-white;
+            font-size: 2rem;
+        }
+    }
+
+    @include respond (mob-nav-b) {
+        display: none;
+    }
+
+    &__cart {
+        
+
+        &--cart {
+            width: 40%;
+        }
+
+        &--div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: -.7rem;
+        }
+
+        &--img {
+            width: 60%;
+        }
+
+        &--p {
+            color: $color-orange-dark;
+            left: 27%;
+            position: relative;
+            font-size: 2rem;
+            margin-bottom: -1.5rem;
+            margin-top: 0;
+        }
+    }
+
+    &__search {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 5rem;
+        margin-top: 3rem;
+
+        &--input {
+            width: 75%;
+        }
+
+        &--icon {
+            background-color: $color-orange-light;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 7%;
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+
+        &--search {
+            font-size: 3.5rem;
+        }
+    }
+
+    &__slider {
+        display: flex;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        transition: all 1s;
+
+        @include respond (mob-nav-b) {
+            display: none;
+        }
+
+        &--nav {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            background-color: $slider-background;
+            left: 0;
+            animation: moveInLeft;
+            animation-duration: 1s;
+            transition: all 1s;
+        }
+
+        &--header {
+            background-color: $color-primary;
+            height: 15vh;
+            padding: 2.5rem;
+        }
+
+        &--user {
+            right: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        &--icon {
+            color: $color-white;
+            font-size: 3.5rem;
+        }
+
+        &--name {
+            color: $color-white;
+            font-size: 2rem;
+        }
+
+        &--title {
+            color: $color-white;
+            font-size: 3.5rem;
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        &--list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &--list > li {
+            background-color: $color-white;
+            height: 10vh;
+            padding: 1.5rem;
+        }
+
+        &--list > li:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        &--item {
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            color: $color-black;
+        }
+
+        &--close {
+            background-color: #00000080;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            right: 0;
+            animation: moveInRight;
+            animation-duration: 1s;
+            transition: all 1s;
+        }
+
+        &--x {
+            color: $color-white;
+            font-size: 5rem;
+            margin-top: 5rem;
+            font-weight: 700;
+        }
+    }
+}
