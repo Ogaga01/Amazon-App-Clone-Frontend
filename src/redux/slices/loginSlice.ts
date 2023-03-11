@@ -7,11 +7,13 @@ interface User {
 }
 
 interface LoginState {
-  user: User | null;
+    user: User | null;
+    isLoggedIn: boolean
 }
 
 const initialState: LoginState = {
-  user: null,
+    user: null,
+    isLoggedIn: false
 };
 
 const loginSlice = createSlice({
@@ -20,7 +22,13 @@ const loginSlice = createSlice({
     reducers: {
         login: (state, action) => {
             state.user = action.payload
+            
         },
+        setIsLoggedIn: (state, action) => {
+            if (state.user !== null) {
+                state.isLoggedIn = true
+            }
+        }
     }
 })
 

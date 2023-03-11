@@ -1,13 +1,18 @@
 import React, { FC, useState } from 'react';
 import { fetchUser } from '../redux/actions/loginAction';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import amazon from './../images/amazon-logo-dark.png'
 import styles from './../sass/_login.module.scss'
-import { useAppDispatch } from '../redux/index';
+import { useAppDispatch, useAppSelector } from '../redux/index';
 
 const Login: FC = () => {
     const [emailValue, setEmailValue] = useState<string>('')
     const [passwordValue, setPasswordValue] = useState<string>("");
+    const navigate = useNavigate()
+
+    const user = useAppSelector((state) => {
+        return state.loginSlice.user
+    })
 
     const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmailValue(e.target.value)
@@ -21,6 +26,11 @@ const Login: FC = () => {
 
     const handleFetchUser = () => {
         dispatch(fetchUser(emailValue, passwordValue))
+        console.log(user, 'fetch')
+        if (user !== null) {
+            console.log(user)
+            navigate("/Account");
+        }
     }
     
 
