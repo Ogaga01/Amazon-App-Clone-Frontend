@@ -1,6 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import amazon from "./../images/amazon-icon.png";
 import usa from "./../images/america-flag.png";
 import styles from "./../sass/_navbar.module.scss";
@@ -10,22 +10,29 @@ import { useAppSelector } from '../redux/index';
 const Navbar: FC = () => {
   const [showAccountDetails, setShowAccountDetails] = useState<boolean>(false);
 
-  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const user = useAppSelector((state) => {
     return state.loginSlice.user
   })
+
+  useEffect(() => {
+    if (user !== null) {
+      console.log(user);
+      setIsLoggedIn(true);
+    }
+  }, [user, navigate]);
 
   // if (user !== null) {
   //   setIsLoggedIn(true)
   //   navigate('/Account')
   // }
 
- const isLoggedIn = useAppSelector((state)=>{
-  return state.loginSlice.isLoggedIn
- })
+//  const isLoggedIn = useAppSelector((state)=>{
+//   return state.loginSlice.isLoggedIn
+//  })
 
   const handleHover = () => {
     setShowAccountDetails(true);

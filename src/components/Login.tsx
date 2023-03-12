@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { fetchUser } from '../redux/actions/loginAction';
 import { NavLink, useNavigate } from 'react-router-dom';
 import amazon from './../images/amazon-logo-dark.png'
@@ -27,11 +27,14 @@ const Login: FC = () => {
     const handleFetchUser = () => {
         dispatch(fetchUser(emailValue, passwordValue))
         console.log(user, 'fetch')
+    }
+
+    useEffect(()=>{
         if (user !== null) {
             console.log(user)
             navigate("/Account");
         }
-    }
+    }, [user, navigate])
     
 
     return (

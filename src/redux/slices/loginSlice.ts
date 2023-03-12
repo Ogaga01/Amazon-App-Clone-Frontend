@@ -8,12 +8,10 @@ interface User {
 
 interface LoginState {
     user: User | null;
-    isLoggedIn: boolean
 }
 
 const initialState: LoginState = {
     user: null,
-    isLoggedIn: false
 };
 
 const loginSlice = createSlice({
@@ -24,11 +22,6 @@ const loginSlice = createSlice({
             state.user = action.payload
             
         },
-        setIsLoggedIn: (state, action) => {
-            if (state.user !== null) {
-                state.isLoggedIn = true
-            }
-        }
     }
 })
 
