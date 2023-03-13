@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface User {
+    status: string;
     name: string,
     cart: string[],
-    role: string
+    role: string,
+    token: string
 }
 
 interface LoginState {

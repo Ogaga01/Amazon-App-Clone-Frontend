@@ -13,16 +13,22 @@ export const fetchUser = (email:string, password:string) => {
           }
         );
 
+        if (!response) {
+            throw new Error(`Cant't reach server`)
+        }
+
         const data = await response.json()
 
-        console.log(data.data.user);
-
+        const status = data.status
+        const token = data.token
         const user = data.data.user
 
         const person = {
             name: user.name,
             cart: user.cart,
-            role: user.role
+            role: user.role,
+            status,
+            token
         }
 
         _dispatch(LoginActions.login(person))
