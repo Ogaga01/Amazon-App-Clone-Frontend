@@ -49,6 +49,10 @@
             background: linear-gradient(#f6dd9e,#f0c24d);
             border: 0.075em solid #878787;
             margin-bottom: 2rem;
+
+            &:hover {
+                background: linear-gradient(#ffdd87,#e8b537);
+            }
         }
 
         &--para {
