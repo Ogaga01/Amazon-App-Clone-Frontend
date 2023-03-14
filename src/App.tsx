@@ -6,6 +6,7 @@ import Account from './components/Account';
 import Orders from './components/Orders';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Homepage from './components/Homepage';
 
 const App: FC = () => {
   // const shouldShowNavbar = !["/Login", "/SignUp"].includes(
@@ -18,6 +19,16 @@ const App: FC = () => {
       {/* {shouldShowNavbar && <Navbar />}
       {shouldShowNavbar && <MobileNavbar/>} */}
       <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <Homepage />
+            </>
+          }
+        />
         <Route
           path="Account"
           element={
