@@ -43,7 +43,7 @@ const MobileNavbar: FC = () => {
               <AiOutlineUser className={styles["mobileNav__info--icon"]} />
               <p className={styles["mobileNav__info--name"]}>User</p>
             </div>
-            <NavLink to="Cart" className={styles["mobileNav__cart--cart"]}>
+            <NavLink to="/Cart" className={styles["mobileNav__cart--cart"]}>
               <div className={styles["mobileNav__cart--div"]}>
                 <p className={styles["mobileNav__cart--p"]}>0</p>
                 <img
@@ -75,7 +75,7 @@ const MobileNavbar: FC = () => {
             <ul className={styles["mobileNav__slider--list"]}>
               <li>
                 <NavLink
-                  to="Account"
+                  to="/Account"
                   className={styles["mobileNav__slider--item"]}
                 >
                   Account
@@ -83,7 +83,7 @@ const MobileNavbar: FC = () => {
               </li>
               <li>
                 <NavLink
-                  to="Orders"
+                  to="/Orders"
                   className={styles["mobileNav__slider--item"]}
                 >
                   Order

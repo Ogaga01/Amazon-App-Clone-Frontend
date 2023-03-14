@@ -29,12 +29,11 @@ const Login: FC = () => {
 
   const handleFetchUser = () => {
     dispatch(fetchUser(emailValue, passwordValue));
-    console.log(user, "fetch");
   };
 
   useEffect(() => {
       if (user !== null && user.status === "success") {          
-          navigate("/Account");
+          navigate("/");
     }
   }, [user, navigate]);
     
