@@ -6,20 +6,71 @@ import Account from './components/Account';
 import Orders from './components/Orders';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Homepage from './components/Homepage';
+import ManageAccount from './components/ManageAccount';
+import ManagePassword from './components/ManagePassword';
 
 const App: FC = () => {
-  const shouldShowNavbar = !["/Login", "/SignUp"].includes(
-    // eslint-disable-next-line no-restricted-globals
-    location.pathname
-  );
+  // const shouldShowNavbar = !["/Login", "/SignUp"].includes(
+  //   // eslint-disable-next-line no-restricted-globals
+  //   location.pathname
+  // );
 
   return (
     <>
-      {shouldShowNavbar && <Navbar />}
-      {shouldShowNavbar && <MobileNavbar/>}
+      {/* {shouldShowNavbar && <Navbar />}
+      {shouldShowNavbar && <MobileNavbar/>} */}
       <Routes>
-        <Route path="Account" element={<Account />} />
-        <Route path="Orders" element={<Orders />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <Homepage />
+            </>
+          }
+        />
+        <Route
+          path="Account"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <Account />
+            </>
+          }
+        />
+        <Route
+          path="ManageAccount"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <ManageAccount />
+            </>
+          }
+        />
+        <Route
+          path="ManagePassword"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <ManagePassword />
+            </>
+          }
+        />
+        <Route
+          path="Orders"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <Orders />
+            </>
+          }
+        />
         <Route path="Login" element={<Login />} />
         <Route path="SignUp" element={<SignUp />} />
       </Routes>

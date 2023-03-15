@@ -7,7 +7,7 @@ import styles from './../sass/_account.module.scss'
 const Account: FC = () => {
     return (
       <section className={styles["account"]}>
-        <NavLink to='Orders' className={styles["account__div"]}>
+        <NavLink to='/Orders' className={styles["account__div"]}>
           <div className={styles["account__div--img"]}>
             <GrDeliver className={styles["account__div--icon"]} />
           </div>
@@ -18,7 +18,7 @@ const Account: FC = () => {
             </p>
           </div>
         </NavLink>
-        <NavLink to='ManageAccount' className={styles["account__div"]}>
+        <NavLink to='/ManageAccount' className={styles["account__div"]}>
           <div className={styles["account__div--img"]}>
             <HiShieldCheck className={styles["account__div--icon"]} />
           </div>

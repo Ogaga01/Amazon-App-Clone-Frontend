@@ -1,0 +1,29 @@
+@import 'mixins';
+@import 'variables';
+
+.manage {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    gap: 10%;
+    top: 10rem;
+    padding: 5rem;
+    flex-wrap: wrap;
+
+    &__button {
+        background: #ffd712;
+        width: 45%;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-black;
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        border-radius: 5%;
+
+        &:hover {
+            background: #f3ce12;
+        }
+    }
+}

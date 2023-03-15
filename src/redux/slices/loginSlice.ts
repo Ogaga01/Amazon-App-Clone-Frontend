@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface User {
+    id: string,
+    status: string;
     name: string,
     cart: string[],
-    role: string
+    role: string,
+    token: string
 }
 
 interface LoginState {
     user: User | null;
-    isLoggedIn: boolean
 }
 
 const initialState: LoginState = {
     user: null,
-    isLoggedIn: false
 };
 
 const loginSlice = createSlice({
@@ -24,11 +25,6 @@ const loginSlice = createSlice({
             state.user = action.payload
             
         },
-        setIsLoggedIn: (state, action) => {
-            if (state.user !== null) {
-                state.isLoggedIn = true
-            }
-        }
     }
 })
 

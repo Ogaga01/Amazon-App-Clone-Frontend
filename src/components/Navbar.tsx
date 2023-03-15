@@ -1,6 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import amazon from "./../images/amazon-icon.png";
 import usa from "./../images/america-flag.png";
 import styles from "./../sass/_navbar.module.scss";
@@ -10,22 +10,18 @@ import { useAppSelector } from '../redux/index';
 const Navbar: FC = () => {
   const [showAccountDetails, setShowAccountDetails] = useState<boolean>(false);
 
-  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-
-  // const navigate = useNavigate()
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
   const user = useAppSelector((state) => {
     return state.loginSlice.user
   })
 
-  // if (user !== null) {
-  //   setIsLoggedIn(true)
-  //   navigate('/Account')
-  // }
+  useEffect(() => {
+    if (user !== null) {
+      setIsLoggedIn(true);
+    }
+  }, [user]);
 
- const isLoggedIn = useAppSelector((state)=>{
-  return state.loginSlice.isLoggedIn
- })
 
   const handleHover = () => {
     setShowAccountDetails(true);
@@ -71,7 +67,7 @@ const Navbar: FC = () => {
           className={styles["nav__account"]}
           onMouseOver={handleHover}
           onMouseLeave={handleLeave}
-          to="Login"
+          to="/Login"
         >
           <div className={styles["nav__para"]}>
             <p className={styles["nav__para--thin"]}>Hello, sign in</p>
@@ -79,13 +75,13 @@ const Navbar: FC = () => {
             <h1 className={styles["nav__para--bold"]}>Account & Lists</h1>
           </div>
           <div className={styles["nav__triangle"]}></div>
-        </NavLink><NavLink className={styles["nav__orders"]} to="Orders">
+        </NavLink><NavLink className={styles["nav__orders"]} to="/Orders">
             <div className={styles["nav__para"]}>
               <p className={styles["nav__para--thin"]}>Returns</p>
               <br />
               <p className={styles["nav__para--bold"]}>& Orders</p>
             </div>
-          </NavLink><NavLink className={styles["nav__cart"]} to="Cart">
+          </NavLink><NavLink className={styles["nav__cart"]} to="/Cart">
             <div className={styles["nav__cart--div"]}>
               <p className={styles["nav__cart--p"]}>0</p>
               <img
@@ -98,7 +94,7 @@ const Navbar: FC = () => {
             className={styles["nav__account"]}
             onMouseOver={handleHover}
             onMouseLeave={handleLeave}
-            to="Account"
+            to="/Account"
           >
             <div className={styles["nav__para"]}>
               <p className={styles["nav__para--thin"]}>Hello, {user!.name.split(' ')[0]}</p>
@@ -106,13 +102,13 @@ const Navbar: FC = () => {
               <h1 className={styles["nav__para--bold"]}>Account & Lists</h1>
             </div>
             <div className={styles["nav__triangle"]}></div>
-          </NavLink><NavLink className={styles["nav__orders"]} to="Orders">
+          </NavLink><NavLink className={styles["nav__orders"]} to="/Orders">
               <div className={styles["nav__para"]}>
                 <p className={styles["nav__para--thin"]}>Returns</p>
                 <br />
                 <p className={styles["nav__para--bold"]}>& Orders</p>
               </div>
-            </NavLink><NavLink className={styles["nav__cart"]} to="Cart">
+            </NavLink><NavLink className={styles["nav__cart"]} to="/Cart">
               <div className={styles["nav__cart--div"]}>
                 <p className={styles["nav__cart--p"]}>{user!.cart.length}</p>
                 <img
@@ -132,10 +128,10 @@ const Navbar: FC = () => {
           <h1 className={styles["nav__account--heading"]}>Your Account</h1>
           <ul className={styles["nav__account--list"]}>
             <li className={styles["nav__account--item"]}>
-              <NavLink to="Account" className={styles["nav__account--items"]}>Account</NavLink>
+              <NavLink to="/Account" className={styles["nav__account--items"]}>Account</NavLink>
             </li>
             <li className={styles["nav__account--item"]}>
-              <NavLink to="Orders" className={styles["nav__account--items"]}>Order</NavLink>
+              <NavLink to="/Orders" className={styles["nav__account--items"]}>Order</NavLink>
             </li>
             <li className={styles["nav__account--items"]}>Sign out</li>
           </ul>
