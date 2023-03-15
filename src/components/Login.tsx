@@ -32,22 +32,25 @@ const Login: FC = () => {
   };
 
   useEffect(() => {
-      if (user !== null && user.status === "success") {          
-          navigate("/");
+    if (user !== null && user.status === "success") {
+      
+      const token = user.token;
+      
+      setCookie("jwt", token, {
+        path: "/",
+        expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
+        secure: true,
+      });
+      
+      navigate("/");
     }
-  }, [user, navigate]);
+  }, [user, navigate, cookies, setCookie]);
     
-    useEffect(() => {
-        if (user !== null) {
-            const token = user.token;
-
-            setCookie("jwt", token, {
-              path: "/",
-              expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
-              secure: true,
-            });
-        }
-    }, [user, cookies, setCookie])
+    // useEffect(() => {
+    //     if (user !== null) {
+            
+    //     }
+    // }, [user, ])
     
 
   return (
