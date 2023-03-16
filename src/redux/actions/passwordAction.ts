@@ -10,7 +10,7 @@ export const updatePassword = (
       {
         method: "PATCH",
         headers: {
-          "Authorization": `Bearer ${document.cookie}`,
+          authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
 
