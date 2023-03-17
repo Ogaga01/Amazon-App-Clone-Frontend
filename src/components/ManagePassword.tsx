@@ -2,15 +2,18 @@ import React, { FC, useState } from "react";
 import styles from "./../sass/_managepassword.module.scss";
 import { updatePassword } from '../redux/actions/passwordAction';
 import { useAppSelector } from '../redux/index';
+import { useNavigate } from "react-router";
 
 const ManagePassword: FC = () => {
   const [password, setPassword] = useState<string>("");
   const [newpassword, setNewPassword] = useState<string>("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState<string>("");
-
-  const user = useAppSelector((state) => {
+  
+  let user = useAppSelector((state) => {
     return state.loginSlice.user
   })
+
+  const navigate = useNavigate()
 
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -25,11 +28,18 @@ const ManagePassword: FC = () => {
   };
 
   const updateUserPassword = () => {
+    console.log('Update user password')
+    console.log('User:', user)
+
     if (user !== null) {
       const token = user.token;
         
-      (updatePassword(token, password, newpassword, newPasswordConfirm))
+      updatePassword(token, password, newpassword, newPasswordConfirm)
     }
+
+    user = null;
+
+    navigate('/login');
   }
 
   return (
@@ -40,7 +50,7 @@ const ManagePassword: FC = () => {
       <input
         className={styles["password__input"]}
         id="currentPassword"
-        type="text"
+        type="password"
         value={password}
         onChange={handlePassword}
       />
@@ -50,7 +60,7 @@ const ManagePassword: FC = () => {
       <input
         className={styles["password__input"]}
         id="newPassword"
-        type="text"
+        type="password"
         value={newpassword}
         onChange={handleNewPassword}
       />
@@ -60,7 +70,7 @@ const ManagePassword: FC = () => {
       <input
         className={styles["password__input"]}
         id="confirmNewPassword"
-        type="text"
+        type="password"
         value={newPasswordConfirm}
         onChange={handleNewPasswordConfirm}
       />
