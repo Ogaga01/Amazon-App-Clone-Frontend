@@ -28,6 +28,8 @@ export const updatePassword = async (
    const status = data.status;
    const jwt = data.token;
   const user = data.data.user;
+
+  console.log(jwt)
   
    const person = {
      name: user.name,
