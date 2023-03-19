@@ -9,6 +9,7 @@ import SignUp from './components/SignUp';
 import Homepage from './components/Homepage';
 import ManageAccount from './components/ManageAccount';
 import ManagePassword from './components/ManagePassword';
+import ManageProducts from './components/ManageProducts';
 
 const App: FC = () => {
   // const shouldShowNavbar = !["/Login", "/SignUp"].includes(
@@ -58,6 +59,16 @@ const App: FC = () => {
               <Navbar />
               <MobileNavbar />
               <ManagePassword />
+            </>
+          }
+        />
+        <Route
+          path="ManageProducts"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <ManageProducts />
             </>
           }
         />

@@ -29,7 +29,7 @@ const ManageAccount: FC = () => {
           <NavLink className={styles["manage__button"]} to="/ManageUser">
             Manage Users
           </NavLink>
-          <NavLink className={styles["manage__button"]} to="/ManageProduct">
+          <NavLink className={styles["manage__button"]} to="/ManageProducts">
             Manage Products
           </NavLink>
         </>
