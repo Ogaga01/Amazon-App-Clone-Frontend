@@ -50,7 +50,7 @@ const SignUp: FC = () => {
         <div className={styles["login__hr"]}></div>
         <p className={styles["login__para"]}>
           Already have an account?{" "}
-          <NavLink to="Login" className={styles["login__para--signup"]}>
+          <NavLink to="/Login" className={styles["login__para--signup"]}>
             Proceed to login
           </NavLink>
         </p>
