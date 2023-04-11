@@ -5,11 +5,13 @@ export const createNewProduct = async (
   description: string,
   photo: File | undefined
 ) => {
-const form = new FormData()
-form.append("name", name)
-form.append("price", price.toString())
-form.append("description", description)
-form.append("photo", JSON.stringify(photo))
+  const form = new FormData();
+  form.append("name", name);
+  form.append("price", price.toString());
+  form.append("description", description);
+  form.append("photo", JSON.stringify(photo));
+
+  console.log(form);
 
   const response = await fetch(
     "https://amazon-clone-api-zq31.onrender.com/api/v1/products",
@@ -20,12 +22,7 @@ form.append("photo", JSON.stringify(photo))
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({
-        name,
-        price,
-        description,
-        photo,
-      }),
+      body: form,
     }
   );
   const data = await response.json();
