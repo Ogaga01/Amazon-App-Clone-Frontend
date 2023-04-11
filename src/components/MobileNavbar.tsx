@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
   AiOutlineMenu,
   AiOutlineSearch,
@@ -9,9 +9,22 @@ import { NavLink } from "react-router-dom";
 import amazon from "./../images/amazon-icon.png";
 import cart from "./../images/cart.png";
 import styles from "./../sass/_mobileNavbar.module.scss";
+import { useAppSelector } from "../redux";
 
 const MobileNavbar: FC = () => {
   const [showSlider, setShowSlider] = useState<boolean>(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const user = useAppSelector((state) => {
+    return state.loginSlice.user;
+  });
+
+  useEffect(() => {
+    if (user !== null) {
+      setIsLoggedIn(true);
+    }
+  }, [user]);
 
   const sliderOpen = () => {
     setShowSlider(true);
@@ -41,7 +54,7 @@ const MobileNavbar: FC = () => {
           <div className={styles["mobileNav__info--right"]}>
             <div className={styles["mobileNav__info--user"]}>
               <AiOutlineUser className={styles["mobileNav__info--icon"]} />
-              <p className={styles["mobileNav__info--name"]}>User</p>
+              <p className={styles["mobileNav__info--name"]}>{!isLoggedIn ? "User" : user?.name}</p>
             </div>
             <NavLink to="/Cart" className={styles["mobileNav__cart--cart"]}>
               <div className={styles["mobileNav__cart--div"]}>
@@ -74,22 +87,39 @@ const MobileNavbar: FC = () => {
             </div>
             <ul className={styles["mobileNav__slider--list"]}>
               <li>
-                <NavLink
-                  to="/Account"
-                  className={styles["mobileNav__slider--item"]}
-                >
-                  Account
-                </NavLink>
+                {!isLoggedIn ? (
+                  <NavLink
+                    to="/Login"
+                    className={styles["mobileNav__slider--item"]}
+                    onClick={sliderClose}
+                  >
+                    Account
+                  </NavLink>
+                ) : (
+                  <NavLink
+                    to="/Account"
+                    className={styles["mobileNav__slider--item"]}
+                    onClick={sliderClose}
+                  >
+                    Account
+                  </NavLink>
+                )}
               </li>
               <li>
                 <NavLink
                   to="/Orders"
                   className={styles["mobileNav__slider--item"]}
+                  onClick={sliderClose}
                 >
                   Order
                 </NavLink>
               </li>
-              <li className={styles["mobileNav__slider--item"]}>Sign out</li>
+              <li
+                className={styles["mobileNav__slider--item"]}
+                onClick={sliderClose}
+              >
+                Sign out
+              </li>
             </ul>
           </div>
           <div className={styles["mobileNav__slider--close"]}>
