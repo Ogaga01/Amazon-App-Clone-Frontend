@@ -1,17 +1,17 @@
 import React, { FC, useState } from "react";
 import { useAppSelector } from "../redux";
 import styles from "./../sass/_manageproducts.module.scss";
-import { createNewProduct } from '../redux/actions/productsAction';
+import { createNewProduct } from "../redux/actions/productsAction";
 
 const ManageProducts: FC = () => {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
-    const [photo, setPhoto] = useState<string>("");
-    
-    let user = useAppSelector((state) => {
-      return state.loginSlice.user;
-    });
+  const [photo, setPhoto] = useState<File>();
+
+  let user = useAppSelector((state) => {
+    return state.loginSlice.user;
+  });
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -22,21 +22,24 @@ const ManageProducts: FC = () => {
   };
 
   const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPhoto(e.target.value);
+    // const {files} = e.target
+    // const selectedFile = files?.[0]
+    setPhoto(e.target.files?.[0]);
   };
 
   const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
-    };
-    
-    const addProduct = () => {
-        console.log('creating product')
-        if (user !== null) {
-            const token = user.token
+  };
 
-            createNewProduct(token, name, price, description, photo)
-        }
+  const addProduct = () => {
+    console.log("creating product");
+    console.log(name, price, description, photo);
+    if (user !== null) {
+      const token = user.token;
+
+      createNewProduct(token, name, price, description, photo);
     }
+  };
 
   return (
     <section className={styles["products"]}>
@@ -74,7 +77,7 @@ const ManageProducts: FC = () => {
             className={styles["products__add--input"]}
             id="photo"
             name="photo"
-            value={photo}
+            // value={photo}
             onChange={handlePhoto}
           />
           <label
@@ -90,7 +93,11 @@ const ManageProducts: FC = () => {
             value={description}
             onChange={handleDescription}
           />
-          <button type="button" className={styles["products__add--button"]} onClick={addProduct}>
+          <button
+            type="button"
+            className={styles["products__add--button"]}
+            onClick={addProduct}
+          >
             Submit
           </button>
         </div>
