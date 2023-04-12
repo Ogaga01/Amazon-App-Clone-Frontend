@@ -1,32 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface User {
-    id: string,
-    status: string;
-    name: string,
-    cart: string[],
-    role: string,
-    token: string
+  id: string;
+  status: string;
+  name: string;
+  cart: string[];
+  role: string;
+  token: string;
 }
 
 interface LoginState {
-    user: User | null;
+  user: User | null;
 }
 
 const initialState: LoginState = {
-    user: null,
+  user: null,
 };
 
 const loginSlice = createSlice({
-    name: 'User',
-    initialState,
-    reducers: {
-        login: (state, action) => {
-            state.user = action.payload
-            
-        },
-    }
-})
+  name: "User",
+  initialState,
+  reducers: {
+    login: (state, action) => {
+      state.user = action.payload;
+    },
+  },
+});
 
 export const LoginActions = loginSlice.actions;
 
