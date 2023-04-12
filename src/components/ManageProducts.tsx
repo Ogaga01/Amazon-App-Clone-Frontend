@@ -7,7 +7,7 @@ const ManageProducts: FC = () => {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
-  const [photo, setPhoto] = useState<File>();
+  // const [photo, setPhoto] = useState<File>();
 
   let user = useAppSelector((state) => {
     return state.loginSlice.user;
@@ -21,11 +21,11 @@ const ManageProducts: FC = () => {
     setPrice(+e.target.value);
   };
 
-  const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const {files} = e.target
-    // const selectedFile = files?.[0]
-    setPhoto(e.target.files?.[0]);
-  };
+  // const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   // const {files} = e.target
+  //   // const selectedFile = files?.[0]
+  //   setPhoto(e.target.files?.[0]);
+  // };
 
   const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
@@ -33,11 +33,14 @@ const ManageProducts: FC = () => {
 
   const addProduct = () => {
     console.log("creating product");
-    console.log(name, price, description, photo);
+    console.log(name, price, description);
     if (user !== null) {
       const token = user.token;
 
-      createNewProduct(token, name, price, description, photo);
+      createNewProduct(token, name, price, description);
+      setDescription("");
+      setName("");
+      setPrice(0)
     }
   };
 
@@ -68,7 +71,7 @@ const ManageProducts: FC = () => {
             value={price}
             onChange={handlePrice}
           />
-          <label htmlFor="photo" className={styles["products__add--label"]}>
+          {/* <label htmlFor="photo" className={styles["products__add--label"]}>
             Product Photo
           </label>
           <input
@@ -79,7 +82,7 @@ const ManageProducts: FC = () => {
             name="photo"
             // value={photo}
             onChange={handlePhoto}
-          />
+          /> */}
           <label
             htmlFor="description"
             className={styles["products__add--label"]}

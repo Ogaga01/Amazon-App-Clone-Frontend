@@ -46,7 +46,9 @@ const Homepage: FC = () => {
               <button
                 type="button"
                 className={styles["homepage__products--button"]}
-              ></button>
+              >
+                Update
+              </button>
             )}
           </div>
         </div>

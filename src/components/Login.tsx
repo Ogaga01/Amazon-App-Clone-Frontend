@@ -99,7 +99,7 @@ const Login: FC = () => {
       <div className={styles["login__hr"]}></div>
       <p className={styles["login__para"]}>
         New to Amazon Clone?{" "}
-        <NavLink to="SignUp" className={styles["login__para--signup"]}>
+        <NavLink to="/SignUp" className={styles["login__para--signup"]}>
           Create an account
         </NavLink>
       </p>
