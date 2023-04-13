@@ -1,15 +1,16 @@
-import React, { FC } from 'react';
-import {Routes, Route} from 'react-router-dom'
-import Navbar from './components/Navbar';
-import MobileNavbar from './components/MobileNavbar';
-import Account from './components/Account';
-import Orders from './components/Orders';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import Homepage from './components/Homepage';
-import ManageAccount from './components/ManageAccount';
-import ManagePassword from './components/ManagePassword';
-import ManageProducts from './components/ManageProducts';
+import React, { FC } from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import MobileNavbar from "./components/MobileNavbar";
+import Account from "./components/Account";
+import Orders from "./components/Orders";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import Homepage from "./components/Homepage";
+import ManageAccount from "./components/ManageAccount";
+import ManagePassword from "./components/ManagePassword";
+import ManageProducts from "./components/ManageProducts";
+import SingleProduct from "./components/SingleProduct";
 
 const App: FC = () => {
   // const shouldShowNavbar = !["/Login", "/SignUp"].includes(
@@ -82,11 +83,21 @@ const App: FC = () => {
             </>
           }
         />
+        <Route
+          path="/:id"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <SingleProduct />
+            </>
+          }
+        />
         <Route path="Login" element={<Login />} />
         <Route path="SignUp" element={<SignUp />} />
       </Routes>
     </>
   );
-}
+};
 
 export default App;

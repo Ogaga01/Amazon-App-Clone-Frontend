@@ -4,6 +4,7 @@ import background from "./../images/Amazon-homepage.jpg";
 import styles from "./../sass/_homepage.module.scss";
 import { useAppDispatch, useAppSelector } from "../redux/index";
 import { fetchProductsData } from "../redux/actions/productsAction";
+import Products from "./Products";
 
 const Homepage: FC = () => {
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
@@ -34,7 +35,8 @@ const Homepage: FC = () => {
           className={styles["homepage__background--image"]}
         />
       </div>
-      <div className={styles["homepage__products"]}>
+      <Products/>
+      {/* <div className={styles["homepage__products"]}>
         <div className={styles["homepage__products--product"]}>
           <div className={styles["homepage__products--image"]}>
             <img src="j" alt="j" />
@@ -60,7 +62,7 @@ const Homepage: FC = () => {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

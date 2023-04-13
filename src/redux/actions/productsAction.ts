@@ -1,4 +1,6 @@
+import { Product } from "../../type";
 import { productActions } from "../slices/productSlice";
+import { singleProductAction } from "../slices/singleProductSlice";
 
 const url: string =
   "https://amazon-clone-api-zq31.onrender.com/api/v1/products";
@@ -37,5 +39,26 @@ export const fetchProductsData = () => {
     const productData = data.data.data;
 
     _dispatch(productActions.replaceProducts(productData));
+  };
+};
+
+export const fetchSingleProduct = (id: string) => {
+  return async (_dispatch: any) => {
+    const response = await fetch(`${url}/${id}`);
+    const data = await response.json();
+    console.log(data);
+
+    const products = data.data.data;
+    console.log(products);
+
+    const product: Product = {
+      id: products.id,
+      name: products.name,
+      photo: products.photo,
+      description: products.description,
+      price: products.price
+    } 
+
+    _dispatch(singleProductAction.addProduct(product))
   };
 };
