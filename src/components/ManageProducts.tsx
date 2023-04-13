@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { useAppSelector } from "../redux";
+import { useAppDispatch, useAppSelector } from "../redux";
 import styles from "./../sass/_manageproducts.module.scss";
 import { createNewProduct } from "../redux/actions/productsAction";
 
@@ -7,11 +7,12 @@ const ManageProducts: FC = () => {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
-  // const [photo, setPhoto] = useState<File>();
 
   let user = useAppSelector((state) => {
     return state.loginSlice.user;
   });
+
+  const dispatch = useAppDispatch()
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -20,12 +21,6 @@ const ManageProducts: FC = () => {
   const handlePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrice(+e.target.value);
   };
-
-  // const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   // const {files} = e.target
-  //   // const selectedFile = files?.[0]
-  //   setPhoto(e.target.files?.[0]);
-  // };
 
   const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
@@ -37,7 +32,7 @@ const ManageProducts: FC = () => {
     if (user !== null) {
       const token = user.token;
 
-      createNewProduct(token, name, price, description);
+      dispatch(createNewProduct(token, name, price, description))
       setDescription("");
       setName("");
       setPrice(0)
