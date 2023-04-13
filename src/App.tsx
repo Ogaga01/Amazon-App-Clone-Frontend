@@ -11,6 +11,7 @@ import ManageAccount from "./components/ManageAccount";
 import ManagePassword from "./components/ManagePassword";
 import ManageProducts from "./components/ManageProducts";
 import SingleProduct from "./components/SingleProduct";
+import EditProduct from "./components/EditProduct";
 
 const App: FC = () => {
   // const shouldShowNavbar = !["/Login", "/SignUp"].includes(
@@ -90,6 +91,16 @@ const App: FC = () => {
               <Navbar />
               <MobileNavbar />
               <SingleProduct />
+            </>
+          }
+        />
+        <Route
+          path="/EditProduct"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <EditProduct />
             </>
           }
         />

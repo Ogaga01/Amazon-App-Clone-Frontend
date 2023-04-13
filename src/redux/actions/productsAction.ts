@@ -1,6 +1,7 @@
 import { Product } from "../../type";
 import { productActions } from "../slices/productSlice";
 import { singleProductAction } from "../slices/singleProductSlice";
+import axios from "axios";
 
 const url: string =
   "https://amazon-clone-api-zq31.onrender.com/api/v1/products";
@@ -23,7 +24,6 @@ export const createNewProduct = (
         name,
         price,
         description,
-        // photo,
       }),
     });
     const data = await response.json();
@@ -73,4 +73,50 @@ export const deleteSingleProduct = async (id: string, token: string) => {
   });
   const data = await response.json();
   console.log(data);
+};
+
+export const editSingleProduct = async (
+  token: string,
+  id: string,
+  name: string,
+  price: number,
+  description: string,
+  photo: string
+) => {
+  const response = await fetch(`${url}/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      price,
+      description,
+      photo,
+    }),
+  });
+  const data = await response.json();
+  console.log(data);
+};
+
+// acktpszn
+
+// export const uploadToCloudinary = async (image: File, preset:string) =>{
+//   const response = await fetch('https://api.cloudinary.com/v1_1/dii1zjc2a/image/upload', {
+//     method: "POST",
+//     body: {image, preset}
+//   })
+// }
+
+export const uploadToCloudinary = (image: File, preset: string) => {
+  const formData = new FormData();
+  formData.append("file", image);
+  formData.append("upload_preset", preset);
+
+  axios
+    .post("https://api.cloudinary.com/v1_1/dii1zjc2a/image/upload", formData)
+    .then((response) => {
+      console.log(response);
+    });
 };
