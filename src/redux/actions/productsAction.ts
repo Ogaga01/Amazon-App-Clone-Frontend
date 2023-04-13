@@ -56,9 +56,21 @@ export const fetchSingleProduct = (id: string) => {
       name: products.name,
       photo: products.photo,
       description: products.description,
-      price: products.price
-    } 
+      price: products.price,
+    };
 
-    _dispatch(singleProductAction.addProduct(product))
+    _dispatch(singleProductAction.addProduct(product));
   };
+};
+
+export const deleteSingleProduct = async (id: string, token: string) => {
+  const response = await fetch(`${url}/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  console.log(data);
 };
