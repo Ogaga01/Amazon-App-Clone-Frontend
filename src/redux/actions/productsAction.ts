@@ -1,3 +1,8 @@
+import { productActions } from "../slices/productSlice";
+
+const url: string =
+  "https://amazon-clone-api-zq31.onrender.com/api/v1/products";
+
 export const createNewProduct = (
   token: string,
   name: string,
@@ -5,24 +10,32 @@ export const createNewProduct = (
   description: string
 ) => {
   return async (_dispatch: any) => {
-    const response = await fetch(
-      "https://amazon-clone-api-zq31.onrender.com/api/v1/products",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
 
-        body: JSON.stringify({
-          name,
-          price,
-          description,
-          // photo,
-        }),
-      }
-    );
+      body: JSON.stringify({
+        name,
+        price,
+        description,
+        // photo,
+      }),
+    });
     const data = await response.json();
     console.log(data);
+  };
+};
+
+export const fetchProductsData = () => {
+  return async (_dispatch: any) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data.data.data);
+    const productData = data.data.data;
+
+    _dispatch(productActions.replaceProducts(productData));
   };
 };

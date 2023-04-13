@@ -8,10 +8,10 @@ const productSlice = createSlice({
   reducers: {
     replaceProducts(state, action) {
       state.products = action.payload.products;
-    }, 
+    },
   },
 });
 
-export const bookActions = productSlice.actions
+export const productActions = productSlice.actions;
 
-export default productSlice.reducer
+export default productSlice.reducer;

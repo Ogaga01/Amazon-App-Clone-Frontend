@@ -2,14 +2,22 @@ import React, { FC, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import background from "./../images/Amazon-homepage.jpg";
 import styles from "./../sass/_homepage.module.scss";
-import { useAppSelector } from "../redux/index";
+import { useAppDispatch, useAppSelector } from "../redux/index";
+import { fetchProductsData } from "../redux/actions/productsAction";
 
 const Homepage: FC = () => {
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
+  const dispatch = useAppDispatch();
+
   const user = useAppSelector((state) => {
     return state.loginSlice.user;
   });
+
+  useEffect(() => {
+    console.log("fetching...")
+    dispatch(fetchProductsData());
+  },[dispatch]);
 
   useEffect(() => {
     if (user !== null && user.role === "admin") {
