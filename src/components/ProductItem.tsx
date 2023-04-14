@@ -14,7 +14,7 @@ const ProductItem: FC<Props> = ({ product }) => {
     </div>
     <div className={styles["product__info"]}>
         <h1 className={styles["product__info--name"]}>{product.name}</h1>
-        <h3 className={styles["product__info--price"]}>{product.price} </h3>
+        <h3 className={styles["product__info--price"]}>{`Price: $${product?.price}`} </h3>
         <button className={styles["product__info--button"]}>Add to Cart</button>
     </div>
   </Link>;

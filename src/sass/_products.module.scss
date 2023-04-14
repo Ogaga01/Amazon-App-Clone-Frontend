@@ -1,2 +1,9 @@
-@import 'mixins';
-@import 'variables';
+@import "mixins";
+@import "variables";
+
+.product__section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -15rem;
+  justify-content: space-evenly;
+}
