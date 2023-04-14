@@ -10,7 +10,8 @@ export const createNewProduct = (
   token: string,
   name: string,
   price: number,
-  description: string
+  description: string,
+  photo: string
 ) => {
   return async (_dispatch: any) => {
     const response = await fetch(url, {
@@ -24,6 +25,7 @@ export const createNewProduct = (
         name,
         price,
         description,
+        photo
       }),
     });
     const data = await response.json();

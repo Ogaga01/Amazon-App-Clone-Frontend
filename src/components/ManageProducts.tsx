@@ -1,18 +1,23 @@
 import React, { FC, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux";
 import styles from "./../sass/_manageproducts.module.scss";
-import { createNewProduct } from "../redux/actions/productsAction";
+import {
+  createNewProduct,
+  uploadToCloudinary,
+} from "../redux/actions/productsAction";
 
 const ManageProducts: FC = () => {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
+  const [photo, setPhoto] = useState<string>("");
+  const [image, setImage] = useState<File | null>();
 
   let user = useAppSelector((state) => {
     return state.loginSlice.user;
   });
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -22,8 +27,21 @@ const ManageProducts: FC = () => {
     setPrice(+e.target.value);
   };
 
+  const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhoto(e.target.value);
+  };
+
   const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
+  };
+
+  const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImage(e.target.files?.[0]);
+  };
+
+  const addImage = () => {
+    uploadToCloudinary(image!, "acktpszn");
+    setImage(null);
   };
 
   const addProduct = () => {
@@ -32,10 +50,10 @@ const ManageProducts: FC = () => {
     if (user !== null) {
       const token = user.token;
 
-      dispatch(createNewProduct(token, name, price, description))
+      dispatch(createNewProduct(token, name, price, description, photo));
       setDescription("");
       setName("");
-      setPrice(0)
+      setPrice(0);
     }
   };
 
@@ -66,18 +84,17 @@ const ManageProducts: FC = () => {
             value={price}
             onChange={handlePrice}
           />
-          {/* <label htmlFor="photo" className={styles["products__add--label"]}>
+          <label htmlFor="photo" className={styles["products__add--label"]}>
             Product Photo
           </label>
           <input
-            type="file"
-            accept="image/*"
+            type="text"
             className={styles["products__add--input"]}
             id="photo"
             name="photo"
-            // value={photo}
+            value={photo}
             onChange={handlePhoto}
-          /> */}
+          />
           <label
             htmlFor="description"
             className={styles["products__add--label"]}
@@ -97,6 +114,27 @@ const ManageProducts: FC = () => {
             onClick={addProduct}
           >
             Submit
+          </button>
+        </div>
+        <div className={styles["products__add--form"]}>
+          <h1 className={styles["products__add--heading"]}>Add Product Image</h1>
+          <label htmlFor="photo" className={styles["products__add--label"]}>
+            Product Photo
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            className={styles["products__add--input"]}
+            id="photo"
+            name="photo"
+            onChange={handleImage}
+          />
+          <button
+            type="button"
+            className={styles["products__add--button"]}
+            onClick={addImage}
+          >
+            Add Image
           </button>
         </div>
       </div>

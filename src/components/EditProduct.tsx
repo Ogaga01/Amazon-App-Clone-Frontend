@@ -42,10 +42,8 @@ const EditProduct: FC = () => {
   };
 
   const editProduct = () => {
-    console.log("creating product");
     console.log(name, price, description, photo);
     if (user !== null && product !== null) {
-      console.log(product.id);
       const token = user.token;
       const id = product.id;
 

@@ -1,7 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux";
 import { NavLink, useParams } from "react-router-dom";
-import { deleteSingleProduct, fetchSingleProduct } from "../redux/actions/productsAction";
+import {
+  deleteSingleProduct,
+  fetchSingleProduct,
+} from "../redux/actions/productsAction";
 import styles from "./../sass/_singleproduct.module.scss";
 
 const SingleProduct: FC = () => {
@@ -29,35 +32,46 @@ const SingleProduct: FC = () => {
     console.log(params.id);
   }, [dispatch, params.id]);
 
-  const deleteProduct = ()=>{
+  const deleteProduct = () => {
     if (user !== null && user.role === "admin") {
-      const token = user.token
+      const token = user.token;
 
-      deleteSingleProduct(params.id!, token)
+      deleteSingleProduct(params.id!, token);
     }
-  }
+  };
 
   return (
     <section className={styles["singleprod"]}>
       <div className={styles["singleprod__image"]}>
         <img
-          src={product?.id}
+          src={product?.photo}
           alt={product?.name}
           className={styles["singleprod__image--photo"]}
         />
       </div>
       <div className={styles["singleprod__info"]}>
         <h1 className={styles["singleprod__info--name"]}>{product?.name}</h1>
-        <h3 className={styles["singleprod__info--price"]}>{product?.price} </h3>
+        <p className={styles["singleprod__info--description"]}>
+          {product?.description}
+        </p>
+        <h3 className={styles["singleprod__info--price"]}>
+          {`Price: $${product?.price}`}{" "}
+        </h3>
         <button className={styles["singleprod__info--button"]}>
           Add to Cart
         </button>
         {isAdmin && (
           <>
-            <NavLink to="/EditProduct" className={styles["singleprod__info--button"]}>
+            <NavLink
+              to="/EditProduct"
+              className={styles["singleprod__info--button"]}
+            >
               Edit Product
             </NavLink>
-            <button className={styles["singleprod__info--button"]} onClick={deleteProduct}>
+            <button
+              className={styles["singleprod__info--button"]}
+              onClick={deleteProduct}
+            >
               Delete Product
             </button>
           </>

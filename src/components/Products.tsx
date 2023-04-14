@@ -1,18 +1,20 @@
-import React from "react";
+import React, { FC }  from "react";
 import { useAppSelector } from "../redux";
 import ProductItem from "./ProductItem";
-import styles from './../sass/_products.module.scss'
+import styles from "./../sass/_products.module.scss";
 
-const Products = () => {
+const Products: FC = () => {
   const products = useAppSelector((state) => {
     return state.productSlice.products;
   });
   console.log(products);
-  return <section className={styles["product__section"]}>
-    {products.map((product)=>{
-        return <ProductItem product={product}/>
-    })}
-  </section>;
+  return (
+    <section className={styles["product__section"]}>
+      {products.map((product) => {
+        return <ProductItem product={product} />;
+      })}
+    </section>
+  );
 };
 
 export default Products;

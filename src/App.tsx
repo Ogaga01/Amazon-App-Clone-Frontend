@@ -14,15 +14,8 @@ import SingleProduct from "./components/SingleProduct";
 import EditProduct from "./components/EditProduct";
 
 const App: FC = () => {
-  // const shouldShowNavbar = !["/Login", "/SignUp"].includes(
-  //   // eslint-disable-next-line no-restricted-globals
-  //   location.pathname
-  // );
-
   return (
     <>
-      {/* {shouldShowNavbar && <Navbar />}
-      {shouldShowNavbar && <MobileNavbar/>} */}
       <Routes>
         <Route
           path="/"
