@@ -25,7 +25,7 @@ export const createNewProduct = (
         name,
         price,
         description,
-        photo
+        photo,
       }),
     });
     const data = await response.json();
@@ -100,16 +100,19 @@ export const editSingleProduct = async (
   });
   const data = await response.json();
   console.log(data);
+
+  // const formData = new FormData();
+  // formData.append("name", name);
+  // formData.append("price", price.toString());
+  // formData.append("description", description);
+  // formData.append("photo", photo);
+
+  // axios.patch(`${url}/${id}`, formData).then((response) => {
+  //   console.log(response);
+  // });
 };
 
 // acktpszn
-
-// export const uploadToCloudinary = async (image: File, preset:string) =>{
-//   const response = await fetch('https://api.cloudinary.com/v1_1/dii1zjc2a/image/upload', {
-//     method: "POST",
-//     body: {image, preset}
-//   })
-// }
 
 export const uploadToCloudinary = (image: File, preset: string) => {
   const formData = new FormData();
