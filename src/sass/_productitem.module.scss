@@ -9,6 +9,12 @@
   height: 60vh;
   margin-bottom: 3rem;
 
+  @include respond(mob-nav) {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 3rem;
+  }
+
   &__image {
     height: 65%;
     width: 100%;
@@ -26,6 +32,10 @@
     width: 100%;
     margin-top: 2.5rem;
     margin-left: 0.5rem;
+
+    @include respond (mob-nav){
+        text-align: center;
+    }
 
     @include respond(mini-phone) {
       width: 100%;
@@ -75,6 +85,10 @@
       text-align: center;
       color: $color-black;
       align-items: center;
+
+      @include respond (mob-nav){
+        margin: auto;
+      }
 
       @include respond(phone) {
         width: 45%;

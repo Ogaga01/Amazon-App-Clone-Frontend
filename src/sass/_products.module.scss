@@ -6,4 +6,10 @@
   flex-wrap: wrap;
   margin-top: -15rem;
   justify-content: space-evenly;
+
+  @include respond(mob-nav) {
+    display: flex;
+    flex-direction: column;
+    margin-top: -70rem;
+  }
 }
