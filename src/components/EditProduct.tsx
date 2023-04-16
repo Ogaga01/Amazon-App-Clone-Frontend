@@ -7,11 +7,11 @@ import {
 } from "../redux/actions/productsAction";
 
 const EditProduct: FC = () => {
-  const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState<number>(0);
-  const [description, setDescription] = useState<string>("");
-  const [photo, setPhoto] = useState<string>("");
-  const [image, setImage] = useState<File | null>();
+  let [name, setName] = useState<string>("");
+  let [price, setPrice] = useState<number>(0);
+  let [description, setDescription] = useState<string>("");
+  let [photo, setPhoto] = useState<string>("");
+  let [image, setImage] = useState<File | null>();
 
   let user = useAppSelector((state) => {
     return state.loginSlice.user;
@@ -46,6 +46,24 @@ const EditProduct: FC = () => {
     if (user !== null && product !== null) {
       const token = user.token;
       const id = product.id;
+
+      if (name === "") {
+        name = product.name;
+      }
+
+      if (price === 0) {
+        price = product.price;
+      }
+
+      if (description === "") {
+        description = product.description;
+      }
+
+      if (photo === "") {
+        photo = product.photo
+      }
+
+      console.log(name, price, description, photo, product);
 
       editSingleProduct(token, id, name, price, description, photo);
       setDescription("");
