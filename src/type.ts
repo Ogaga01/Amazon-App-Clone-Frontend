@@ -8,17 +8,17 @@ export type Product = {
   totalQuantity?: number;
 };
 
-export type Products = {
-  id: string;
-  name: string;
-  photo: string;
-  price: number;
-  totalPrice: number;
-  totalQuantity: number;
-};
+// export type Products = {
+//   id: string;
+//   name: string;
+//   photo: string;
+//   price: number;
+//   totalPrice: number;
+//   totalQuantity: number;
+// };
 
 export type Cart = {
-  products: Products[];
+  products: string[];
   totalPrice: number;
   totalQuantity: number;
 };

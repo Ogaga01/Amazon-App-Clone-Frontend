@@ -7,7 +7,6 @@ const Products: FC = () => {
   const products = useAppSelector((state) => {
     return state.productSlice.products;
   });
-  console.log(products);
   return (
     <section className={styles["product__section"]}>
       {products.map((product) => {

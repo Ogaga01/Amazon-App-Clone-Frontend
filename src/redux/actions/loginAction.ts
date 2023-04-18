@@ -19,7 +19,7 @@ export const fetchUser = (email: string, password: string) => {
 
     const data = await response.json();
 
-    console.log(data)
+    console.log(data);
 
     const status = data.status;
     const token = data.token;
@@ -30,6 +30,7 @@ export const fetchUser = (email: string, password: string) => {
       cart: user.cart,
       role: user.role,
       id: user._id,
+      email: user.email,
       status,
       token,
     };

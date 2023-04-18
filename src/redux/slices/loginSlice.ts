@@ -5,6 +5,7 @@ interface User {
   id: string;
   status: string;
   name: string;
+  email: string;
   cart: Cart[];
   role: string;
   token: string;
