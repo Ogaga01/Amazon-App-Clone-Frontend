@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Cart } from "../../type";
 
 interface User {
   id: string;
   status: string;
   name: string;
-  cart: string[];
+  cart: Cart[];
   role: string;
   token: string;
 }

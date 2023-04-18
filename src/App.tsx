@@ -12,6 +12,8 @@ import ManagePassword from "./components/ManagePassword";
 import ManageProducts from "./components/ManageProducts";
 import SingleProduct from "./components/SingleProduct";
 import EditProduct from "./components/EditProduct";
+import ManageMe from "./components/ManageMe";
+import Cart from "./components/Cart";
 
 const App: FC = () => {
   return (
@@ -94,6 +96,26 @@ const App: FC = () => {
               <Navbar />
               <MobileNavbar />
               <EditProduct />
+            </>
+          }
+        />
+        <Route
+          path="/ManageMe"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <ManageMe />
+            </>
+          }
+        />
+        <Route
+          path="/Cart"
+          element={
+            <>
+              <Navbar />
+              <MobileNavbar />
+              <Cart />
             </>
           }
         />
