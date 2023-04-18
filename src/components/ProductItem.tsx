@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import { Cart, Product } from "../type";
 import styles from "./../sass/_productitem.module.scss";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../redux";
+import { useAppDispatch, useAppSelector } from "../redux";
+import { editCurrentUser } from "../redux/actions/userActions";
 
 interface Props {
   product: Product;
@@ -13,20 +14,50 @@ const ProductItem: FC<Props> = ({ product }) => {
     return state.loginSlice.user?.cart;
   });
 
+  const user = useAppSelector((state) => {
+    return state.loginSlice.user;
+  });
+
+  const dispatch = useAppDispatch();
+
+  const carts: Cart = {
+    products: [product.id],
+    totalPrice: product.price,
+    totalQuantity: 1,
+  };
   const addToCart = () => {
-    if (cart?.length === 0) {
-      const carts: Cart = {
-        products: [product.id],
-        totalPrice: product.price,
-        totalQuantity: 1,
-      };
-      cart!.push(carts);
+    if (cart?.length! <= 0) {
+      console.log(cart, cart?.length);
+      dispatch(
+        editCurrentUser(user?.token!, user?.name!, user?.email!, [carts])
+      );
     } else {
-      cart![0].products.push(product.id);
-      cart![0].totalPrice = cart![0].totalPrice + product.price;
-      cart![0].totalQuantity++;
+      const carts = [...cart!];
+      console.log(carts);
+      carts![0].products.push(product.id);
+      carts![0].totalPrice = carts[0].totalPrice + product.price;
+      carts![0].totalQuantity++;
+      console.log(cart);
+      dispatch(
+        editCurrentUser(user?.token!, user?.name!, user?.email!, carts!)
+      );
     }
   };
+
+  // const addToCart = () => {
+  //   if (cart?.length === 0) {
+  //     const carts: Cart = {
+  //       products: [product.id],
+  //       totalPrice: product.price,
+  //       totalQuantity: 1,
+  //     };
+  //     cart!.push(carts);
+  //   } else {
+  //     cart![0].products.push(product.id);
+  //     cart![0].totalPrice = cart![0].totalPrice + product.price;
+  //     cart![0].totalQuantity++;
+  //   }
+  // };
 
   return (
     <section className={styles["product"]}>

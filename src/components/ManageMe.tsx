@@ -11,7 +11,11 @@ const ManageMe: FC = () => {
     return state.loginSlice.user;
   });
 
-  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => {
+    return state.loginSlice.user?.cart;
+  });
+
+  const dispatch = useAppDispatch()
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -29,10 +33,10 @@ const ManageMe: FC = () => {
       if (email === "") {
         email = user.email;
       }
-      dispatch(editCurrentUser(user.token, name, email));
+      dispatch(editCurrentUser(user.token, name, email, cart!));
     }
     setName("");
-    setEmail('');
+    setEmail("");
   };
 
   return (

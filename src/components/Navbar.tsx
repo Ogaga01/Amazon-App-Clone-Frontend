@@ -122,7 +122,11 @@ const Navbar: FC = () => {
             </NavLink>
             <NavLink className={styles["nav__cart"]} to="/Cart">
               <div className={styles["nav__cart--div"]}>
-                <p className={styles["nav__cart--p"]}>{user!.cart.length > 0 ? user!.cart[0].products.length : user!.cart.length}</p>
+                <p className={styles["nav__cart--p"]}>
+                  {user!.cart.length > 0
+                    ? user!.cart[0].products.length
+                    : user!.cart.length}
+                </p>
                 <img
                   src={cart}
                   alt="Amazon Cart"
