@@ -32,10 +32,10 @@ const ProductItem: FC<Props> = ({ product }) => {
         editCurrentUser(user?.token!, user?.name!, user?.email!, [carts])
       );
     } else {
-      const carts = [...cart!];
+      const carts = JSON.parse(JSON.stringify(cart));
       console.log(carts);
       carts![0].products.push(product.id);
-      carts![0].totalPrice = carts[0].totalPrice + product.price;
+      carts![0].totalPrice = carts![0].totalPrice + product.price;
       carts![0].totalQuantity++;
       console.log(cart);
       dispatch(
