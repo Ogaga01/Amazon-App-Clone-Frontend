@@ -4,8 +4,8 @@
 .item {
   display: flex;
   width: 100%;
-  align-items: center; 
-  
+  align-items: center;
+
   &__image {
     width: 25%;
 
@@ -55,6 +55,12 @@
       &:hover {
         cursor: pointer;
       }
+    }
+
+    &--price {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: $color-price;
     }
   }
 

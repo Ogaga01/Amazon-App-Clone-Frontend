@@ -4,6 +4,7 @@
 .cart {
   display: flex;
   padding: 2rem;
+  justify-content: space-evenly;
 
   &__product {
     width: 80%;
@@ -33,7 +34,27 @@
       font-size: 1.5rem;
       font-weight: 300;
       color: #d29757;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
+  }
+
+  &--input {
+    background-color: #fff;
+    margin-top: 0.5rem;
+  }
+
+  &--label {
+    margin-left: 0.5rem;
+    font-weight: 200;
+    margin-top: 0.5rem;
+  }
+
+  &--form {
+    display: flex;
+    align-items: center;
   }
 
   &__hr {
@@ -41,5 +62,38 @@
     height: 0.1rem;
     width: 100%;
     margin: 1rem 0;
+  }
+
+  &__aggregate {
+    width: 17%;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-white;
+    height: 25vh;
+
+    &--heading {
+      font-size: 1.6rem;
+      font-weight: 300;
+    }
+
+    &--button {
+      background-color: #ffd712;
+      width: 70%;
+      height: 3rem;
+      border: none;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      text-align: center;
+      color: $color-black;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+
+      &:hover {
+        background: #f3ce12;
+      }
+    }
   }
 }

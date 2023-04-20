@@ -1,17 +1,33 @@
 import React, { FC } from "react";
-import { useAppSelector } from "../redux";
+import { useAppDispatch, useAppSelector } from "../redux";
 import bg from "./../images/looking.png";
 import CartItem from "./CartItem";
-import { Product } from "../type";
+import { Cart, Product } from "../type";
 import styles from "./../sass/_cart.module.scss";
 import { Link } from "react-router-dom";
+import { editCurrentUser } from "../redux/actions/userActions";
 
-const Cart: FC = () => {
+const Carts: FC = () => {
   let cart = useAppSelector((state) => {
     return state.loginSlice.user?.cart;
   });
 
+  const user = useAppSelector((state) => {
+    return state.loginSlice.user;
+  });
+
+  const dispatch = useAppDispatch();
+
   console.log(cart);
+  const deleteAllCartItems = () => {
+    const carts: Cart = {
+      products: [],
+      totalPrice: 0,
+      totalQuantity: 0,
+    };
+
+    dispatch(editCurrentUser(user?.token!, user?.name!, user?.email!, [carts]));
+  };
 
   return (
     <section className={styles["cart"]}>
@@ -28,7 +44,10 @@ const Cart: FC = () => {
         </Link>
         <div className={styles["cart__product--title"]}>
           <h1 className={styles["cart__product--heading"]}>Shopping Cart</h1>
-          <h3 className={styles["cart__product--delete"]}>
+          <h3
+            className={styles["cart__product--delete"]}
+            onClick={deleteAllCartItems}
+          >
             Delete all items from cart
           </h3>
           <div className={styles["cart__hr"]}></div>
@@ -41,14 +60,30 @@ const Cart: FC = () => {
       </div>
       <div className={styles["cart__aggregate"]}>
         <h3 className={styles["cart__aggregate--heading"]}>
-          Subtotal: {cart![0] ? cart![0].totalPrice : 0}
+          Subtotal: {cart![0] ? `$${cart![0].totalPrice}` : "$0.0"}
         </h3>
-        <button className={styles["cart__aggregate--button"]}>
+        <div className={styles["cart--form"]}>
+          <input
+            className={styles["cart--input"]}
+            type="checkbox"
+            id="gift"
+            name="gift"
+            value="Gift"
+          />
+          <label htmlFor="gift" className={styles["cart--label"]}>
+            This cart contains a gift
+          </label>
+        </div>
+        <Link
+          to="https://docs.google.com/document/d/1qFzZ41ulkY1H1wA4-e5KH_72SAY_n1FsvedcsLidHjs/edit?usp=sharing"
+          target="blank"
+          className={styles["cart__aggregate--button"]}
+        >
           Proceed to checkout
-        </button>
+        </Link>
       </div>
     </section>
   );
 };
 
-export default Cart;
+export default Carts;

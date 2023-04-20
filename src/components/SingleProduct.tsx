@@ -6,12 +6,18 @@ import {
   fetchSingleProduct,
 } from "../redux/actions/productsAction";
 import styles from "./../sass/_singleproduct.module.scss";
+import { editCurrentUser } from "../redux/actions/userActions";
+import { Cart } from "../type";
 
 const SingleProduct: FC = () => {
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const user = useAppSelector((state) => {
     return state.loginSlice.user;
+  });
+
+  const cart = useAppSelector((state) => {
+    return state.loginSlice.user?.cart;
   });
 
   useEffect(() => {
@@ -40,6 +46,34 @@ const SingleProduct: FC = () => {
     }
   };
 
+  const carts: Cart = {
+    products: [product!.id],
+    totalPrice: product!.price,
+    totalQuantity: 1,
+  };
+  const addToCart = () => {
+    if (cart?.length! <= 0) {
+      console.log(cart, cart?.length);
+      dispatch(
+        editCurrentUser(user?.token!, user?.name!, user?.email!, [carts])
+      );
+    } else {
+      const carts = JSON.parse(JSON.stringify(cart));
+      console.log(carts![0]);
+      const existingProduct = cart![0].products?.find((products) => {
+        return products.id === product!.id;
+      });
+      if (existingProduct) return;
+      carts![0].products.push(product!.id);
+      carts![0].totalPrice = carts![0].totalPrice + product!.price;
+      carts![0].totalQuantity++;
+      console.log(cart);
+      dispatch(
+        editCurrentUser(user?.token!, user?.name!, user?.email!, carts!)
+      );
+    }
+  };
+
   return (
     <section className={styles["singleprod"]}>
       <div className={styles["singleprod__image"]}>
@@ -57,7 +91,7 @@ const SingleProduct: FC = () => {
         <h3 className={styles["singleprod__info--price"]}>
           {`Price: $${product?.price}`}{" "}
         </h3>
-        <button className={styles["singleprod__info--button"]}>
+        <button className={styles["singleprod__info--button"]} onClick={addToCart}>
           Add to Cart
         </button>
         {isAdmin && (

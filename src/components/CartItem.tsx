@@ -72,7 +72,7 @@ const CartItem: FC<Props> = ({ product }) => {
               Delete
             </p>
           </div>
-          <div className={styles["item__info--price"]}>{product.price}</div>
+          <div className={styles["item__info--price"]}>{`$${product?.price}`}</div>
         </div>
       </section>
       <div className={styles["item__hr"]}></div>
