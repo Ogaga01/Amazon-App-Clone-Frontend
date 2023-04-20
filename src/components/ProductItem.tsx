@@ -33,7 +33,11 @@ const ProductItem: FC<Props> = ({ product }) => {
       );
     } else {
       const carts = JSON.parse(JSON.stringify(cart));
-      console.log(carts);
+      console.log(carts![0]);
+      const existingProduct = cart![0].products?.find((products) => {
+        return products.id === product.id;
+      });
+      if (existingProduct) return;
       carts![0].products.push(product.id);
       carts![0].totalPrice = carts![0].totalPrice + product.price;
       carts![0].totalQuantity++;

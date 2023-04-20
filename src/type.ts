@@ -18,7 +18,7 @@ export type Product = {
 // };
 
 export type Cart = {
-  products: string | {}[];
+  products: any[] | undefined;
   totalPrice: number;
   totalQuantity: number;
 };

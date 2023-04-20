@@ -124,7 +124,7 @@ const Navbar: FC = () => {
               <div className={styles["nav__cart--div"]}>
                 <p className={styles["nav__cart--p"]}>
                   {user!.cart.length > 0
-                    ? user!.cart[0].products.length
+                    ? user!.cart[0].products!.length
                     : user!.cart.length}
                 </p>
                 <img
