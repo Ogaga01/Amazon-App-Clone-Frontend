@@ -54,11 +54,15 @@ const MobileNavbar: FC = () => {
           <div className={styles["mobileNav__info--right"]}>
             <div className={styles["mobileNav__info--user"]}>
               <AiOutlineUser className={styles["mobileNav__info--icon"]} />
-              <p className={styles["mobileNav__info--name"]}>{!isLoggedIn ? "User" : user?.name}</p>
+              <p className={styles["mobileNav__info--name"]}>
+                {!isLoggedIn ? "User" : user?.name}
+              </p>
             </div>
             <NavLink to="/Cart" className={styles["mobileNav__cart--cart"]}>
               <div className={styles["mobileNav__cart--div"]}>
-                <p className={styles["mobileNav__cart--p"]}>0</p>
+                <p className={styles["mobileNav__cart--p"]}>
+                  {user?.cart.length!>0? user?.cart[0].products!.length : 0}
+                </p>
                 <img
                   src={cart}
                   alt="Amazon Cart"

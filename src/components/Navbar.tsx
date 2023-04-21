@@ -84,7 +84,7 @@ const Navbar: FC = () => {
                 <p className={styles["nav__para--bold"]}>& Orders</p>
               </div>
             </NavLink>
-            <NavLink className={styles["nav__cart"]} to="/Cart">
+            <NavLink className={styles["nav__cart"]} to="/Login">
               <div className={styles["nav__cart--div"]}>
                 <p className={styles["nav__cart--p"]}>0</p>
                 <img

@@ -19,6 +19,6 @@ export type Product = {
 
 export type Cart = {
   products: any[] | undefined;
-  totalPrice: number;
-  totalQuantity: number;
+  totalPrice: number | undefined;
+  totalQuantity: number | undefined;
 };

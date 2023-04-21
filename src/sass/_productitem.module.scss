@@ -9,10 +9,19 @@
   height: 60vh;
   margin-bottom: 3rem;
 
+  @include respond(tab-land) {
+    height: 60vh;
+  }
+
+  @include respond(tab-port) {
+    height: 60vh;
+  }
+
   @include respond(mob-nav) {
     width: 90%;
     margin: auto;
     margin-bottom: 3rem;
+    height: 60vh;
   }
 
   &__image {
@@ -25,6 +34,12 @@
       margin-left: 25%;
       margin-top: 2rem;
       object-fit: contain;
+
+      @include respond(phone) {
+        width: 70%;
+        object-fit: contain;
+        margin-left: 15%;
+      }
     }
   }
 
@@ -33,8 +48,8 @@
     margin-top: 2.5rem;
     margin-left: 0.5rem;
 
-    @include respond (mob-nav){
-        text-align: center;
+    @include respond(mob-nav) {
+      text-align: center;
     }
 
     @include respond(mini-phone) {
@@ -47,8 +62,14 @@
       font-size: 2rem;
       margin-bottom: 0.5rem;
 
-      @include respond(phone) {
-        font-size: 2rem;
+      @include respond(tab-land) {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      @include respond(mob-nav) {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
       }
 
       @include respond(mini-phone) {
@@ -72,6 +93,16 @@
       color: $color-price;
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
+
+      @include respond(tab-land) {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      @include respond(mob-nav) {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
     }
 
     &--button {
@@ -85,8 +116,9 @@
       text-align: center;
       color: $color-black;
       align-items: center;
+      transition: all 0.5s;
 
-      @include respond (mob-nav){
+      @include respond(mob-nav) {
         margin: auto;
       }
 
@@ -100,6 +132,11 @@
 
       &:hover {
         background: #f3ce12;
+        transform: translateY(-0.5rem);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
   }

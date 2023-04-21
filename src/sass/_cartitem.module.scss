@@ -9,15 +9,33 @@
   &__image {
     width: 25%;
 
+    @include respond(mob-nav) {
+      width: 35%;
+    }
+
     &--photo {
       width: 70%;
       object-fit: contain;
+
+      @include respond(mini-phone) {
+        width: 80%;
+      }
     }
   }
 
   &__info {
-    width: 80%;
+    width: 75%;
     display: flex;
+
+    @include respond(mob-nav) {
+      width: 65%;
+    }
+
+    @include respond(mini-phone) {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+    }
 
     &--details {
       width: 90%;
@@ -26,6 +44,14 @@
     &--name {
       font-size: 2rem;
       font-weight: 400;
+
+      @include respond(mob-nav) {
+        font-size: 2.5rem;
+      }
+
+      @include respond(phone) {
+        font-size: 2rem;
+      }
     }
 
     &--form {
@@ -33,6 +59,14 @@
       align-items: center;
       font-size: 1.3rem;
       font-weight: 100;
+
+      @include respond(mob-nav) {
+        font-size: 1.7rem;
+      }
+
+      @include respond(mini-phone) {
+        font-size: 1.3rem;
+      }
     }
 
     &--link {
@@ -61,6 +95,10 @@
       font-size: 1.8rem;
       font-weight: 500;
       color: $color-price;
+
+      @include respond(mob-nav) {
+        font-size: 2.1rem;
+      }
     }
   }
 

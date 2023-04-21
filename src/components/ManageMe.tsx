@@ -15,7 +15,7 @@ const ManageMe: FC = () => {
     return state.loginSlice.user?.cart;
   });
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -56,7 +56,7 @@ const ManageMe: FC = () => {
             onChange={handleName}
           />
           <label htmlFor="email" className={styles["products__add--label"]}>
-            Product Price
+            Email
           </label>
           <input
             type="text"

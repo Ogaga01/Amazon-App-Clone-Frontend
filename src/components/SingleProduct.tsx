@@ -30,6 +30,8 @@ const SingleProduct: FC = () => {
     return state.singleProductSlice.product;
   });
 
+  console.log(product);
+
   const dispatch = useAppDispatch();
   const params = useParams();
 
@@ -47,8 +49,8 @@ const SingleProduct: FC = () => {
   };
 
   const carts: Cart = {
-    products: [product!.id],
-    totalPrice: product!.price,
+    products: [product?.id],
+    totalPrice: product?.price,
     totalQuantity: 1,
   };
   const addToCart = () => {
@@ -91,7 +93,10 @@ const SingleProduct: FC = () => {
         <h3 className={styles["singleprod__info--price"]}>
           {`Price: $${product?.price}`}{" "}
         </h3>
-        <button className={styles["singleprod__info--button"]} onClick={addToCart}>
+        <button
+          className={styles["singleprod__info--button"]}
+          onClick={addToCart}
+        >
           Add to Cart
         </button>
         {isAdmin && (

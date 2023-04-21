@@ -6,8 +6,19 @@
   padding: 2rem;
   justify-content: space-evenly;
 
+  @include respond(mob-nav) {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__product {
     width: 80%;
+
+    @include respond(mob-nav) {
+      width: 90%;
+      margin: auto;
+      margin-bottom: 2rem;
+    }
 
     &--image {
       width: 100%;
@@ -23,6 +34,10 @@
       margin-top: -0.5rem;
       height: 15vh;
       padding: 2rem;
+
+      @include respond(mob-nav) {
+        height: 10vh;
+      }
     }
 
     &--heading {
@@ -71,6 +86,15 @@
     flex-direction: column;
     background-color: $color-white;
     height: 25vh;
+
+    @include respond(mob-nav) {
+      width: 90%;
+      margin: auto;
+      height: 15vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
     &--heading {
       font-size: 1.6rem;

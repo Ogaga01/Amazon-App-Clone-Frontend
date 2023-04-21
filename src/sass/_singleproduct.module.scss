@@ -82,6 +82,11 @@
       text-align: center;
       color: $color-black;
       align-items: center;
+      transition: all 0.5s;
+
+      @include respond(mob-nav) {
+        width: 60%;
+      }
 
       @include respond(phone) {
         width: 45%;
@@ -93,6 +98,11 @@
 
       &:hover {
         background: #f3ce12;
+        transform: translateY(-0.5rem);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
   }

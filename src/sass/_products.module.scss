@@ -7,9 +7,29 @@
   margin-top: -15rem;
   justify-content: space-evenly;
 
+  @include respond(tab-land-max) {
+    margin-top: -15rem;
+  }
+
+  @include respond(tab-land) {
+    margin-top: -25rem;
+  }
+
+  @include respond(tab-port) {
+    margin-top: -30rem;
+  }
+
   @include respond(mob-nav) {
     display: flex;
     flex-direction: column;
-    margin-top: -70rem;
+    margin-top: -37rem;
+  }
+
+  @include respond(phone) {
+    margin-top: -45rem;
+  }
+
+  @include respond(mini-phone) {
+    margin-top: -50rem;
   }
 }
