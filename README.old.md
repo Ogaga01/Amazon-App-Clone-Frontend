@@ -1,1 +1,0 @@
-# Amazon-App-Clone-Frontend
