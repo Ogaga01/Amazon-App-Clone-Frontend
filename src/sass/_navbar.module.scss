@@ -38,7 +38,7 @@
   &__delivery {
     display: flex;
     padding: 1rem;
-    align-items: end;
+    align-items: flex-end;
     // width: 7%;
 
     @include respond(tab-port) {
@@ -252,7 +252,7 @@
 
     &--para {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       font-size: 1.3rem;
     }
 
