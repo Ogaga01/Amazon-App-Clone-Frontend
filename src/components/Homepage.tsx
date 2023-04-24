@@ -1,30 +1,30 @@
-import React, { FC, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { FC, useEffect } from "react";
+// import { Link } from "react-router-dom";
 import background from "./../images/Amazon-homepage.jpg";
 import styles from "./../sass/_homepage.module.scss";
-import { useAppDispatch, useAppSelector } from "../redux/index";
+import { useAppDispatch } from "../redux/index";
 import { fetchProductsData } from "../redux/actions/productsAction";
 import Products from "./Products";
 
 const Homepage: FC = () => {
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  // const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
 
-  const user = useAppSelector((state) => {
-    return state.loginSlice.user;
-  });
+  // const user = useAppSelector((state) => {
+  //   return state.loginSlice.user;
+  // });
 
   useEffect(() => {
-    console.log("fetching...")
+    console.log("fetching...");
     dispatch(fetchProductsData());
-  },[dispatch]);
+  }, [dispatch]);
 
-  useEffect(() => {
-    if (user !== null && user.role === "admin") {
-      setIsAdmin(true);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user !== null && user.role === "admin") {
+  //     setIsAdmin(true);
+  //   }
+  // }, [user]);
 
   return (
     <section className={styles["homepage"]}>
@@ -35,7 +35,7 @@ const Homepage: FC = () => {
           className={styles["homepage__background--image"]}
         />
       </div>
-      <Products/>
+      <Products />
       {/* <div className={styles["homepage__products"]}>
         <div className={styles["homepage__products--product"]}>
           <div className={styles["homepage__products--image"]}>
