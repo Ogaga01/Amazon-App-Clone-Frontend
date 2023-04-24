@@ -5,7 +5,7 @@ import {
   AiOutlineUser,
   AiOutlineClose,
 } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import amazon from "./../images/amazon-icon.png";
 import cart from "./../images/cart.png";
 import styles from "./../sass/_mobileNavbar.module.scss";
@@ -52,16 +52,16 @@ const MobileNavbar: FC = () => {
             </NavLink>
           </div>
           <div className={styles["mobileNav__info--right"]}>
-            <div className={styles["mobileNav__info--user"]}>
+            <Link to="/Login" className={styles["mobileNav__info--user"]}>
               <AiOutlineUser className={styles["mobileNav__info--icon"]} />
               <p className={styles["mobileNav__info--name"]}>
-                {!isLoggedIn ? "User" : user?.name}
+                {!isLoggedIn ? "User" : user?.name.split(" ")[0]}
               </p>
-            </div>
+            </Link>
             <NavLink to="/Cart" className={styles["mobileNav__cart--cart"]}>
               <div className={styles["mobileNav__cart--div"]}>
                 <p className={styles["mobileNav__cart--p"]}>
-                  {user?.cart.length!>0? user?.cart[0].products!.length : 0}
+                  {user?.cart.length! > 0 ? user?.cart[0].products!.length : 0}
                 </p>
                 <img
                   src={cart}
