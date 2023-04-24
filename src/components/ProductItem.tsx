@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Cart, Product } from "../type";
 import styles from "./../sass/_productitem.module.scss";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ interface Props {
 }
 
 const ProductItem: FC<Props> = ({ product }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
   const cart = useAppSelector((state) => {
     return state.loginSlice.user?.cart;
   });
@@ -17,6 +19,12 @@ const ProductItem: FC<Props> = ({ product }) => {
   const user = useAppSelector((state) => {
     return state.loginSlice.user;
   });
+
+  useEffect(() => {
+    if (user !== null) {
+      setIsLoggedIn(true);
+    }
+  }, [user]);
 
   const dispatch = useAppDispatch();
 
@@ -77,9 +85,18 @@ const ProductItem: FC<Props> = ({ product }) => {
         <h3 className={styles["product__info--price"]}>
           {`Price: $${product.price}`}{" "}
         </h3>
-        <button className={styles["product__info--button"]} onClick={addToCart}>
-          Add to Cart
-        </button>
+        {isLoggedIn ? (
+          <button
+            className={styles["product__info--button"]}
+            onClick={addToCart}
+          >
+            Add to Cart
+          </button>
+        ) : (
+          <Link to="/Login" className={styles["product__info--button"]}>
+            Add to Cart
+          </Link>
+        )}
       </div>
     </section>
   );
